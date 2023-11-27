@@ -181,6 +181,47 @@ alter table cliente add constraint UC_cliente_correo unique(correo);
 alter table clienteSegundaMano add constraint UC_clienteSegundaMano_telefono unique(telefono); 
 alter table clienteSegundaMano add constraint UC_clienteSegundaMano_correo unique(correo);
 
+	
+
+-- foreign key
+
+alter table trabajadores 
+add constraint FK_trabajadores_sucursalId foreign key(sucursalId) references sucursal(id),
+add constraint FK_trabajadores_empleadoId foreign key(empleadoId) references empleado(id);
+
+alter table factura
+add constraint FK_factura_empleadoId foreign key (empleadoId) references empleado(id),
+add constraint FK_factura_clienteId foreign key (clienteId) references cliente(id),
+add constraint FK_factura_productosId foreign key (productosId) references productos(id),
+add constraint FK_factura_preFacturaId foreign key (preFacturaId) references preFactura(id),
+add constraint FK_factura_metodoPagoId foreign key (metodoPagoId) references metodoPago(id);
+
+alter table preFactura
+add constraint FK_preFactura_tipoServicio foreign key (tipoServicio) references servicio(tipoServicio);
+
+alter table productos
+add constraint FK_productos_producto foreign key (producto) references producto(producto);
+
+alter table producto
+add constraint FK_producto_inventario foreign key (producto) references inventario(producto);
+
+alter table inventario 
+add constraint FK_inventario_distribuidorId foreign key (distribuidorId) references distribuidor(id);
+
+alter table facturaSegundaMano
+add constraint FK_facturaSegundaMano_empleadoId foreign key (empleadoId) references empleado(id),
+add constraint FK_facturaSegundaMano_clienteSegundaManoId foreign key (clienteId) references clienteSegundaMano(id),
+add constraint FK_facturaSegundaMano_productosSegundaManoId foreign key (productosId) references productosSegundaMano(id),
+add constraint FK_facturaSegundaMano_metodoPagoSegundaManoId foreign key (metodoPagoId) references metodoPago(id);
+
+alter table productosSegundaMano
+add constraint FK_productosSegundaMano_producto foreign key (producto) references productoSegundaMano(producto);
+
+alter table productoSegundaMano
+add constraint FK_productoSegundaMano_inventarioSegundaMano foreign key (producto) references inventarioSegundaMano(producto);
+
+alter table inventarioSegundaMano 
+add constraint FK_inventarioSegundaMano_distribuidorSegundaManoId foreign key (distribuidorId) references distribuidorSegundaMano(id);
 
 
 
