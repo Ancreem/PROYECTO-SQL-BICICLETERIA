@@ -19,3 +19,8 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
 ### Modelo logico
 
 ![imagen](https://github.com/Ancreem/PROYECTO-SQL-BICICLETERIA/assets/139159920/ad6132ab-288f-4a62-92c2-831c0e127304)
+
+
+### Modelo fisico
+
+![bicicleteria](https://github.com/Ancreem/PROYECTO-SQL-BICICLETERIA/assets/139159920/ef046f5d-a7c4-4dd2-b40e-d413c59cd9b2)
