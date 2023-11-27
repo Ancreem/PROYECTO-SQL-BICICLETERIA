@@ -166,6 +166,21 @@ alter table distribuidorSegundaMano add constraint PK_distribuidorSegundaMano_id
 alter table inventarioSegundaMano add constraint PK_inventarioSegundaMano_producto primary key (producto);
 alter table productoSegundaMano add constraint PK_productoSegundaMano_producto primary key (producto);
 
+-- llaves unicas
+
+alter table empleado add constraint UC_empleado_numeroCelular unique (numeroCelular);
+alter table empleado add constraint UC_empleado_correo unique (correo); 
+alter table distribuidor add constraint UC_distribuidor_numeroTelefono unique(numeroTelefono);
+alter table distribuidor add constraint UC_distribuidor_numeroCelular unique(numeroCelular);
+alter table distribuidor add constraint UC_distribuidor_correo unique(correo);
+alter table distribuidorSegundaMano add constraint UC_distribuidorSegundaMano_numeroTelefono unique(numeroTelefono);
+alter table distribuidorSegundaMano add constraint UC_distribuidorSegundaMano_numeroCelular unique(numeroCelular);
+alter table distribuidorSegundaMano add constraint UC_distribuidorSegundaMano_correo unique(correo);
+alter table cliente add constraint UC_cliente_telefono unique(telefono); 
+alter table cliente add constraint UC_cliente_correo unique(correo);
+alter table clienteSegundaMano add constraint UC_clienteSegundaMano_telefono unique(telefono); 
+alter table clienteSegundaMano add constraint UC_clienteSegundaMano_correo unique(correo);
+
 
 
 
