@@ -145,6 +145,27 @@ create table if not exists productoSegundaMano(
 );
 
 
+-- llaves primarias
+
+alter table sucursal add constraint PK_sucursal_id primary key (id);
+alter table trabajadores add constraint PK_trabajadores_id primary key (id);
+alter table empleado add constraint PK_factura_id primary key (id);
+alter table metodoPago add constraint PK_metodoPago_id primary key (id);
+alter table servicio add constraint PK_servicio_tipoServicio primary key (tipoServicio);
+alter table preFactura add constraint PK_preFactura_id primary key (id);
+alter table factura add constraint PK_factura_id primary key(id);
+alter table cliente add constraint PK_cliente_id primary key (id);
+alter table productos add constraint PK_productos_id primary key (id);
+alter table distribuidor add constraint PK_distribuidor_id primary key (id);
+alter table inventario add constraint PK_inventario_producto primary key (producto);
+alter table producto add constraint PK_producto_producto primary key (producto);
+alter table facturaSegundaMano add constraint PK_facturaSegundaMano_id primary key(id);
+alter table clienteSegundaMano add constraint PK_clienteSegundaMano_id primary key (id);
+alter table productosSegundaMano add constraint PK_productosSegundaMano_id primary key (id);
+alter table distribuidorSegundaMano add constraint PK_distribuidorSegundaMano_id primary key (id);
+alter table inventarioSegundaMano add constraint PK_inventarioSegundaMano_producto primary key (producto);
+alter table productoSegundaMano add constraint PK_productoSegundaMano_producto primary key (producto);
+
 
 
 
