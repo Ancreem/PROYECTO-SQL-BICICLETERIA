@@ -158,7 +158,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    - Procedimiento `trabajador_no_sucursal`
 
    ```sql
-   trabajador_no_sucursal	DELIMITER //
+     DELIMITER //
    	create procedure trabajador_no_sucursal()
    	begin
    	    select e.id, e.rol, CONCAT(e.nombre, ' ', e.apellido1, ' ', e.apellido2) AS nombre_completo
