@@ -73,7 +73,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call servicio_en_sucursal();`
-   
+
 2. Listar los productos en el inventario que tengan una cantidad superior a 25 y un precio inferior a 20000.
 
    - Consulta
@@ -108,7 +108,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call producto_inventario_desde_hasta(desde, hasta);`
-   
+
 3. Encuentra el nombre y el número de teléfono de los distribuidores que han suministrado productos en el último mes.
 
    - Consulta
@@ -141,7 +141,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call distribuidores_ultimo_mes();`
-   
+
 4. Devuelva que trabajador no se encuentra en ninguna sucursal. Muestre su id, rol, con su nombre y apellidos.
 
    - Consulta
@@ -168,7 +168,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call trabajador_no_sucursal() ;`
-   
+
 5. Obtén el nombre de los clientes que hayan realizado compras con Tarjeta de crédito  y en la sucursal con dirección "Avenida B #456".
 
    - Consulta
@@ -209,7 +209,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call metoPago_en_sucursal_cliente(direccionSucursal, nombreTargeta);`
-   
+
 6. Listar los servicios ofrecidos para "Bicicletas" de complejidad "Baja" y al id de factura al que pertenecen.
 
    - Consulta
@@ -244,7 +244,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call servicios_complejidad(complejidadTrabajo, tipoDeVehiculo);`
-   
+
 7. Obtenga el nombre de los productos de segunda mano con estado "Nuevo" y un precio mayor a 300.
 
    - Consulta
@@ -269,7 +269,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call productosSegundaMano_estado_mayorA(estadoProducto, precioProducto);`
-   
+
 8. Obtener el total de ventas realizado por el empleado con el id "1", mostrando el  nombre del empleado y la suma de los montos de venta, considerando las facturas emitidas.
 
    - Consulta
@@ -302,7 +302,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call empleado_ventas(id);`
-   
+
 9. Muestre los productos que ha suministrado el distribuidor "Bicicletas del Futuro Ltda"
 
    - Consulta
@@ -334,7 +334,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call productos_suministrados_distribuidor(nombreDistribuidor);`
-   
+
 10. Muestre los clientes que han realizado pagos con tarjeta. Tenga en cuenta que debe de imprimir el nombre del cliente y el tipo de pago que tiene el cliente.
 
     - Consulta
@@ -365,7 +365,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call clientes_tipoPago(tipoPago);`
-    
+
 11. Consulte cuales son los Productos cuyo precio es mayor al promedio y muéstrelos en pantalla.
 
     - Consulta
@@ -394,7 +394,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call productos_mayor_promedio();`
-    
+
 12. Imprima en pantalla cuales son los servicios no utilizados en ninguna factura. Muestre todas la columnas.
 
     - Consulta
@@ -423,7 +423,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call productos_no_ulizados_factura();`
-    
+
 13. Encuentre cuales son los productos con precio superior al promedio de su categoría. Imprima el nombre del producto y su categoría.
 
     - Consulta
@@ -457,7 +457,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call productos_precio_sup_categoria();`
-    
+
 14. Muestre la cantidad de productos suministrados por el distribuidor  "Bicicletas del Futuro Ltda".
 
     - Consulta
@@ -487,7 +487,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call cantidad_productos_distribuidor(distribuidor);`
-    
+
 15. Obtenga el nombre de los clientes que han realizado compras en todas las sucursales.
 
     - Consulta
@@ -532,7 +532,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call clientes_todas_sucursales();`
-    
+
 16. Devuelva el nombre y la dirección de las sucursales que no han realizado ventas en el último mes.
 
     - Consulta
@@ -573,7 +573,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call sucursales_no_ventas_mes(numeroMeses);`
-    
+
 17. Mostrar el nombre de los clientes que han realizado compras en más de una sucursal.
 
     - Consulta
@@ -608,7 +608,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call clientes_compras_mas_sucursal(numeroSucursales);`
-    
+
 18. Encontrar los productos que no han sido vendidos en el último mes.
 
     - Consulta
@@ -678,7 +678,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call servicios_no_utilizados_mes(mes);`
-    
+
 20. Listar los productos que han sido comprados más de 2 veces en total.
 
     - Consulta
@@ -707,7 +707,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call productos_comprados_cant(cantidad);`
-    
+
 21. Calcular el monto total de compras realizadas por clientes con más de 5 productos en una sola factura.
 
     - Consulta
@@ -736,7 +736,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call monto_compras_cliente_cant_productos(cantProductos);`
-    
+
 22. Listar los servicios que han sido utilizados por empleados con el apellido "Martínez".
 
     - Consulta
@@ -767,167 +767,338 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call servicios_utilizados_empleado_apellido(apellido);`
-    
-23. a
+
+23.  Obtenga los detalles de Factura Segunda Mano con el id "1"
 
     - Consulta
 
     ```sql
-    
+    	SELECT fs.*, e.nombre AS empleado, c.nombre AS cliente, p.producto AS producto, mp.nombre AS metodo_pago
+        FROM facturaSegundaMano fs
+        JOIN empleado e ON fs.empleadoId = e.id
+        JOIN clienteSegundaMano c ON fs.clienteId = c.id
+        JOIN productosSegundaMano p ON fs.productosId = p.id
+        JOIN metodoPago mp ON fs.metodoPagoId = mp.id
+        WHERE fs.id = 1;	
     ```
 
-    - Procedimiento ``
-
+    - Procedimiento `ObtenerDetallesFacturaSegundaMano`
+    
     ```sql
-    
+    	DELIMITER //
+    	CREATE PROCEDURE ObtenerDetallesFacturaSegundaMano(IN factura_id INT)
+    	BEGIN
+            SELECT fs.*, e.nombre AS empleado, c.nombre AS cliente, p.producto AS producto, mp.nombre AS metodo_pago
+            FROM facturaSegundaMano fs
+            JOIN empleado e ON fs.empleadoId = e.id
+            JOIN clienteSegundaMano c ON fs.clienteId = c.id
+            JOIN productosSegundaMano p ON fs.productosId = p.id
+            JOIN metodoPago mp ON fs.metodoPagoId = mp.id
+            WHERE fs.id = factura_id;
+    	END //
+    	DELIMITER ;
     ```
-
-    - Llamado `call ;`
     
-24. a
+    - Llamado `call ObtenerDetallesFacturaSegundaMano(factura);`
+    
+24. Obtenga los detalles de Factura con el id "2"
 
     - Consulta
 
     ```sql
-    
+    	SELECT f.*, e.nombre AS empleado, c.nombre AS cliente, p.producto AS producto, mp.nombre AS metodo_pago
+        FROM factura f
+        JOIN empleado e ON f.empleadoId = e.id
+        JOIN cliente c ON f.clienteId = c.id
+        JOIN productos p ON f.productosId = p.id
+        JOIN metodoPago mp ON f.metodoPagoId = mp.id
+        WHERE f.id = 2;	
     ```
 
-    - Procedimiento ``
+    - Procedimiento `ObtenerDetallesFactura`
 
     ```sql
-    
+        DELIMITER //
+        CREATE PROCEDURE ObtenerDetallesFactura(IN factura_id INT)
+        BEGIN
+            SELECT f.*, e.nombre AS empleado, c.nombre AS cliente, p.producto AS producto, mp.nombre AS metodo_pago
+            FROM factura f
+            JOIN empleado e ON f.empleadoId = e.id
+            JOIN cliente c ON f.clienteId = c.id
+            JOIN productos p ON f.productosId = p.id
+            JOIN metodoPago mp ON f.metodoPagoId = mp.id
+            WHERE f.id = factura_id;
+        END //
+        DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
-25. a
+    - Llamado `call ObtenerDetallesFactura(factura);`
+
+25. Encuentra el nombre y el número de teléfono de los distribuidores que han suministrado productos en el último mes.
 
     - Consulta
 
     ```sql
-    
+    	select distinct d.nombre, numeroTelefono as Telefono
+    	from distribuidorSegundaMano d
+    	join inventarioSegundaMano i on i.distribuidorId = d.id
+    	where 
+    	month(i.fecha) = month(current_date())
+    	and
+        year(i.fecha) = year(current_date());
     ```
 
-    - Procedimiento ``
+    - Procedimiento `distribuidoresSegundaMano_ultimo_mes`
 
     ```sql
-    
+    	DELIMITER //
+    	create procedure distribuidoresSegundaMano_ultimo_mes()
+    	begin 
+            select distinct d.nombre, numeroTelefono as Telefono
+            from distribuidorSegundaMano d
+            join inventarioSegundaMano i on i.distribuidorId = d.id
+            where 
+            month(i.fecha) = month(current_date())
+            and
+            year(i.fecha) = year(current_date());
+    	end //
+    	DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
-26. a
+    - Llamado `call distribuidoresSegundaMano_ultimo_mes();`
+
+26. Listar los productos de segunda mano en el inventario de segunda mano que tengan una cantidad superior a 25 y un precio inferior a 20000.
 
     - Consulta
 
     ```sql
-    
+    	select *
+        from inventarioSegundaMano
+        where cantidad > desde
+        and producto in (
+        select producto 
+        from productoSegundaMano 
+        where precio < hasta
     ```
 
-    - Procedimiento ``
+    - Procedimiento `productoSegun_inventarioSegun_desde_hasta`
 
     ```sql
-    
+    	DELIMITER //
+    	create procedure productoSegun_inventarioSegun_desde_hasta(in desde int, in hasta int) 
+    	begin
+    		select *
+            from inventarioSegundaMano
+            where cantidad > desde
+            and producto in (
+              select producto 
+              from productoSegundaMano 
+              where precio < hasta
+            );
+    	end // 
+    	DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
-27. a
+    - Llamado `call productoSegun_inventarioSegun_desde_hasta(desde, hasta);`
+
+27.   Muestre la cantidad de productos suministrados por el distribuidor  "Bicicletas del Futuro Ltda".
 
     - Consulta
 
     ```sql
-    
+        select count(p.producto) as cantidad_de_productos
+        from producto p
+        join inventarioSegundaMano i ON i.producto = p.producto
+        join distribuidorSegundaMano d ON i.distribuidorId = d.id
+        where d.nombre like '%Velocidad Extrema Distribuciones%';
     ```
 
-    - Procedimiento ``
+    - Procedimiento `cantidad_productos_distribuidorSegunda`
 
     ```sql
-    
+    	DELIMITER //
+    	create procedure cantidad_productos_distribuidorSegunda(in distribuidorSegundaMano varchar(150))
+    	begin
+    		set @distribuidoBuscar = concat('%', distribuidorSegundaMano ,'%');
+    		select count(p.producto) as cantidad_de_productos
+            from producto p
+            join inventarioSegundaMano i ON i.producto = p.producto
+            join distribuidorSegundaMano d ON i.distribuidorId = d.id
+            where d.nombre like @distribuidoBuscar;
+    	end //
+    	DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
-28. a
+    - Llamado `call cantidad_productos_distribuidorSegunda(distribuidorSegundaMano);`
+
+28. Obtenga el nombre de los clientes de segunda mano que han realizado compras en todas las sucursales.
 
     - Consulta
 
     ```sql
-    
+    	select c.nombre as nombre_cliente
+        from clienteSegundaMano c
+        where not exists (
+            select 1
+            from sucursal s
+            where not exists (
+                select 1
+                from factura f
+                join empleado e on f.empleadoId = e.id
+                join trabajadores t on e.id = t.empleadoId
+                where t.sucursalId = s.id and f.clienteId = c.id
+            )
+        );
     ```
 
-    - Procedimiento ``
+    - Procedimiento `clientesSegundaMano_todas_sucursales`
 
     ```sql
-    
+    	DELIMITER //
+        create procedure clientesSegundaMano_todas_sucursales()
+        begin
+        	select c.nombre as nombre_cliente
+        	from clienteSegundaMano c
+        	where not exists (
+            select 1
+            from sucursal s
+            where not exists (
+                select 1
+                from factura f
+                join empleado e on f.empleadoId = e.id
+                join trabajadores t on e.id = t.empleadoId
+                where t.sucursalId = s.id and f.clienteId = c.id
+            ));
+        end //
+    	DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
-29. a
+    - Llamado `call clientesSegundaMano_todas_sucursales();`
+
+29. Listar los productos de segunda mano que han sido comprados más de 1 vez en total.
 
     - Consulta
 
     ```sql
-    
+    	select ps.producto
+        from productosSegundaMano ps
+        join facturaSegundaMano f on ps.id = f.productosId
+        group by ps.producto
+        having count(f.id) > 1;
     ```
 
-    - Procedimiento ``
+    - Procedimiento `productosSegundaMano_comprados_cant`
 
     ```sql
-    
+    	DELIMITER //
+    	create procedure productosSegundaMano_comprados_cant(in cantidad int)
+    	begin
+            select ps.producto
+            from productosSegundaMano ps
+            join facturaSegundaMano f on ps.id = f.productosId
+            group by ps.producto
+            having count(f.id) > cantidad;
+    	end //
+    	DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
-30. a
+    - Llamado `call productosSegundaMano_comprados_cant(cantidad);`
+
+30. Calcular el monto total de compras realizadas por clientes con más de 3 productos en una sola factura. Los clientes, los productos y la factura son todas de segunda mano.
 
     - Consulta
 
     ```sql
-    
+    	select SUM(p.precio * ps.cantidad) AS monto_total
+        from facturaSegundaMano f
+        join productosSegundaMano ps on f.productosId = ps.id
+        join productoSegundaMano p on ps.producto = p.producto
+        where ps.cantidad > 3;
     ```
 
-    - Procedimiento ``
+    - Procedimiento `monto_compras_cliente_cant_productosSegundaMano`
 
     ```sql
-    
+    	DELIMITER //
+    	create procedure monto_compras_cliente_cant_productosSegundaMano(in numProductos int)
+    	begin
+    		select SUM(p.precio * ps.cantidad) AS monto_total
+            from facturaSegundaMano f
+            join productosSegundaMano ps on f.productosId = ps.id
+            join productoSegundaMano p on ps.producto = p.producto
+            where ps.cantidad > numProductos;
+    	end //
+    	DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
-31. a
+    - Llamado `call call monto_compras_cliente_cant_productosSegundaMano(numProductos);`
+
+31. Obtenga las facturas con un Método de Pago de id 1.
 
     - Consulta
 
     ```sql
-    
+    	SELECT f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
+        FROM factura f
+        JOIN empleado e ON e.id = f.empleadoId
+        JOIN cliente c ON c.id = f.clienteId
+        JOIN productos p ON p.id = f.productosId
+        JOIN metodoPago m ON m.id = f.metodoPagoId
+        WHERE f.metodoPagoId = 1;
     ```
 
-    - Procedimiento ``
+    - Procedimiento `ObtenerFacturasPorMetodoPago`
 
     ```sql
-    
+        DELIMITER //
+        CREATE PROCEDURE ObtenerFacturasPorMetodoPago(IN metodo_pago_id INT)
+        BEGIN
+        		SELECT f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
+            FROM factura f
+            JOIN empleado e ON e.id = f.empleadoId
+            JOIN cliente c ON c.id = f.clienteId
+            JOIN productos p ON p.id = f.productosId
+            JOIN metodoPago m ON m.id = f.metodoPagoId
+            WHERE f.metodoPagoId = metodo_pago_id;
+        END //
+        DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
-32. a
+    - Llamado `call ObtenerFacturasPorMetodoPago(metodo_pago_id);`
+
+32. Obtenga las facturas de segunda mano con un Método de Pago de id 7.
 
     - Consulta
 
     ```sql
-    
+        SELECT f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
+        FROM facturaSegundaMano f
+        JOIN empleado e ON e.id = f.empleadoId
+        JOIN clienteSegundaMano c ON c.id = f.clienteId
+        JOIN productosSegundaMano p ON p.id = f.productosId
+        JOIN metodoPago m ON m.id = f.metodoPagoId
+        WHERE f.metodoPagoId = 7;
     ```
 
-    - Procedimiento ``
+    - Procedimiento `ObtenerFacturasSegundaManoPorMetodoPago`
 
     ```sql
-    
+    	DELIMITER //
+        CREATE PROCEDURE ObtenerFacturasSegundaManoPorMetodoPago(IN metodo_pago_id INT)
+        BEGIN
+        	SELECT f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
+            FROM facturaSegundaMano f
+            JOIN empleado e ON e.id = f.empleadoId
+            JOIN clienteSegundaMano c ON c.id = f.clienteId
+            JOIN productosSegundaMano p ON p.id = f.productosId
+            JOIN metodoPago m ON m.id = f.metodoPagoId
+            WHERE f.metodoPagoId = metodo_pago_id;
+        END //
+        DELIMITER ;
     ```
 
-    - Llamado `call ;`
-    
+    - Llamado `call ObtenerFacturasSegundaManoPorMetodoPago(metodo_pago_id);`
+
 33. a
 
     - Consulta
@@ -943,7 +1114,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 34. a
 
     - Consulta
@@ -959,7 +1130,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 35. a
 
     - Consulta
@@ -975,7 +1146,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 36. a
 
     - Consulta
@@ -991,7 +1162,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 37. a
 
     - Consulta
@@ -1007,7 +1178,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 38. a
 
     - Consulta
@@ -1023,7 +1194,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 39. a
 
     - Consulta
@@ -1039,7 +1210,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 40. a
 
     - Consulta
@@ -1055,7 +1226,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 41. a
 
     - Consulta
@@ -1071,7 +1242,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 42. a
 
     - Consulta
@@ -1087,7 +1258,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 43. a
 
     - Consulta
@@ -1103,7 +1274,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 44. a
 
     - Consulta
@@ -1119,7 +1290,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 45. a
 
     - Consulta
@@ -1135,7 +1306,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 46. a
 
     - Consulta
@@ -1151,7 +1322,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 47. a
 
     - Consulta
@@ -1167,7 +1338,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 48. a
 
     - Consulta
@@ -1183,7 +1354,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 49. a
 
     - Consulta
@@ -1199,7 +1370,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 50. a
 
     - Consulta
@@ -1215,7 +1386,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 51. a
 
     - Consulta
@@ -1231,7 +1402,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 52. a
 
     - Consulta
@@ -1247,7 +1418,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 53. a
 
     - Consulta
@@ -1263,7 +1434,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 54. a
 
     - Consulta
@@ -1279,7 +1450,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 55. a
 
     - Consulta
@@ -1295,7 +1466,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 56. a
 
     - Consulta
@@ -1311,7 +1482,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 57. a
 
     - Consulta
@@ -1327,7 +1498,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 58. a
 
     - Consulta
@@ -1343,7 +1514,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 59. a
 
     - Consulta
@@ -1359,7 +1530,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 60. a
 
     - Consulta
@@ -1375,7 +1546,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 61. a
 
     - Consulta
@@ -1391,7 +1562,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 62. a
 
     - Consulta
@@ -1407,7 +1578,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 63. a
 
     - Consulta
@@ -1423,7 +1594,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 64. a
 
     - Consulta
@@ -1439,7 +1610,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 65. a
 
     - Consulta
@@ -1455,7 +1626,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 66. a
 
     - Consulta
@@ -1471,7 +1642,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 67. a
 
     - Consulta
@@ -1487,7 +1658,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 68. a
 
     - Consulta
@@ -1503,7 +1674,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 69. a
 
     - Consulta
@@ -1519,7 +1690,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 70. a
 
     - Consulta
@@ -1535,7 +1706,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 71. a
 
     - Consulta
@@ -1551,7 +1722,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 72. a
 
     - Consulta
@@ -1567,7 +1738,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 73. a
 
     - Consulta
@@ -1583,7 +1754,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 74. a
 
     - Consulta
@@ -1599,7 +1770,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 75. a
 
     - Consulta
@@ -1615,7 +1786,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 76. a
 
     - Consulta
@@ -1631,7 +1802,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 77. a
 
     - Consulta
@@ -1647,7 +1818,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 78. a
 
     - Consulta
@@ -1663,7 +1834,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 79. a
 
     - Consulta
@@ -1679,7 +1850,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 80. a
 
     - Consulta
@@ -1695,7 +1866,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 81. a
 
     - Consulta
@@ -1711,7 +1882,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 82. a
 
     - Consulta
@@ -1727,7 +1898,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 83. a
 
     - Consulta
@@ -1743,7 +1914,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 84. a
 
     - Consulta
@@ -1759,7 +1930,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 85. a
 
     - Consulta
@@ -1775,7 +1946,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 86. a
 
     - Consulta
@@ -1791,7 +1962,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 87. a
 
     - Consulta
@@ -1807,7 +1978,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 88. a
 
     - Consulta
@@ -1823,7 +1994,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 89. a
 
     - Consulta
@@ -1839,7 +2010,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call ;`
-    
+
 90. a
 
     - Consulta
@@ -1874,7 +2045,6 @@ END //
 
 DELIMITER
 
-  
-</details>
 
+</details>
 
