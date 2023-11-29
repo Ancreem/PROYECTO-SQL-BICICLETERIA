@@ -121,6 +121,106 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
 
     - Llamado `call sucursales_no_ventas_mes(numeroMeses);`
 
+
+3. Obtenga un de las Sucursales con mayor número de Empleados.
+
+    - Consulta
+
+    ```sql
+    	select s.nombre as sucursal,
+                (select COUNT(*) 
+                from trabajadores 
+                where sucursalId = s.id) as numero_empleados
+        from sucursal s
+        order by numero_empleados DESC
+        limit 1;
+    ```
+
+    - Procedimiento `ObtenerSucursalesMayorNumeroEmpleados`
+
+    ```sql
+        DELIMITER //
+        create procedure ObtenerSucursalesMayorNumeroEmpleados()
+        begin
+            select s.nombre as sucursal,
+                (select COUNT(*) 
+                from trabajadores 
+                where sucursalId = s.id) as numero_empleados
+            from sucursal s
+            order by numero_empleados DESC
+            limit 1;
+        end //
+        DELIMITER ;
+
+    ```
+
+    - Llamado `call ObtenerSucursalesMayorNumeroEmpleados();`
+
+
+4. Obtenga los detalles de Empleados en la Sucursal 1.
+
+    - Consulta
+
+    ```sql
+    	select e.*
+        from empleado e
+        where e.id IN (
+            select empleadoId 
+            from trabajadores 
+            where sucursalId = 1
+        );
+    ```
+
+    - Procedimiento `ObtenerDetallesEmpleadosSucursal`
+
+    ```sql
+        DELIMITER //
+        create procedure ObtenerDetallesEmpleadosSucursal(IN sucursal_id INT)
+        begin
+            select e.*
+            from empleado e
+            where e.id IN (
+                select empleadoId 
+                from trabajadores 
+                where sucursalId = sucursal_id
+            );
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ObtenerDetallesEmpleadosSucursal(sucursal_id);`
+
+
+5. Cuente las facturas emitidas por la sucursal 2
+
+    - Consulta
+
+    ```sql
+    	select COUNT(*)
+        from factura
+        where empleadoId IN (
+            select empleadoId 
+            from trabajadores 
+            where sucursalId = 2
+        );
+    ```
+
+    - Procedimiento `ContarFacturasSucursal`
+
+    ```sql
+        DELIMITER //
+        create procedure ContarFacturasSucursal(IN sucursal_id INT)
+        begin
+            select COUNT(*)
+            from factura
+            where empleadoId IN (select empleadoId from trabajadores where sucursalId = sucursal_id);
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ContarFacturasSucursal(sucursal_id);`
+
+
 </details>
 
 
@@ -133,7 +233,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    - Consulta
 
    ```sql
-       select e.id, e.rol, CONCAT(e.nombre, ' ', e.apellido1, ' ', e.apellido2) AS nombre_completo
+       select e.id, e.rol, CONCAT(e.nombre, ' ', e.apellido1, ' ', e.apellido2) as nombre_completo
        from empleado e
        left join trabajadores t on e.id = t.empleadoId
        where t.sucursalId is NULL;
@@ -145,7 +245,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    trabajador_no_sucursal	DELIMITER //
    	create procedure trabajador_no_sucursal()
    	begin
-   	    select e.id, e.rol, CONCAT(e.nombre, ' ', e.apellido1, ' ', e.apellido2) AS nombre_completo
+   	    select e.id, e.rol, CONCAT(e.nombre, ' ', e.apellido1, ' ', e.apellido2) as nombre_completo
        	from empleado e
        	left join trabajadores t on e.id = t.empleadoId
        	where t.sucursalId is NULL;
@@ -154,6 +254,120 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    ```
 
    - Llamado `call trabajador_no_sucursal() ;`
+
+
+2.  Cuente cuantos empleados hay del rol "Vendedor" en especifico en la sucursal con el id 1.
+
+    - Consulta
+
+    ```sql
+    	select COUNT(*)
+        from empleado
+        where id IN (
+            select empleadoId 
+            from trabajadores 
+            where sucursalId = 1
+        )
+        AND rol = 'Vendedor';
+    ```
+
+    - Procedimiento `ContarEmpleadosPorRolSucursal`
+
+    ```sql
+        DELIMITER //
+        create procedure ContarEmpleadosPorRolSucursal(IN sucursal_id INT, IN rol_empleado VARCHAR(255))
+        begin
+            select COUNT(*)
+            from empleado
+            where id IN (
+                select empleadoId 
+                from trabajadores 
+                where sucursalId = sucursal_id
+            )
+            AND rol = rol_empleado;
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ContarEmpleadosPorRolSucursal(sucursal_id, rol_empleado);`
+
+
+4. Obtenga las sucursales con al menos un empleado de un rol especificado.
+    - Consulta
+
+    ```sql
+    	select DISTINCT s.*
+        from sucursal s
+        where s.id IN (
+        select sucursalId 
+            from trabajadores 
+            where empleadoId IN (
+                select id 
+                from empleado 
+                where rol = "Vendedor"
+            )
+        );
+    ```
+
+    - Procedimiento `ObtenerSucursalesConRolEspecifico`
+
+    ```sql
+        DELIMITER //
+        create procedure ObtenerSucursalesConRolEspecifico(IN rol_empleado VARCHAR(255))
+        begin
+            select DISTINCT s.*
+            from sucursal s
+            where s.id IN (
+            select sucursalId 
+            from trabajadores 
+                where empleadoId IN (
+                    select id 
+                    from empleado 
+                    where rol = rol_empleado
+                )
+            );
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ObtenerSucursalesConRolEspecifico(rol_empleado);`
+
+
+5. Muestre los empleados que trabajan en más de una sucursal.
+
+    - Consulta
+
+    ```sql
+    	select *
+        from empleado
+        where id IN (
+            select empleadoId
+            from trabajadores
+            GROUP BY empleadoId
+            HAVING COUNT(DISTINCT sucursalId) > 1
+        );
+    ```
+
+    - Procedimiento `ObtenerEmpleadosEnMasDeUnaSucursal`
+
+    ```sql
+        DELIMITER //
+        create procedure ObtenerEmpleadosEnMasDeUnaSucursal()
+        begin
+            select *
+            from empleado
+            where id IN (
+                select empleadoId
+                from trabajadores
+                GROUP BY empleadoId
+                HAVING COUNT(DISTINCT sucursalId) > 1
+            );
+        end //
+        DELIMITER ;
+
+    ```
+
+    - Llamado `call ObtenerEmpleadosEnMasDeUnaSucursal();`
 
 </details>
 
@@ -227,6 +441,104 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     - Llamado `call servicios_utilizados_empleado_apellido(apellido);`
 
 
+3. Obtenga los empleados que han hecho ventas entre "2023-10-23" hasta "2023-11-23".
+
+    - Consulta
+
+    ```sql
+    	select *
+        from empleado
+        where id IN (
+            select empleadoId 
+            from factura 
+            where fecha BETWEEN "2023-10-23" AND "2023-11-23"
+        );
+    ```
+
+    - Procedimiento ``
+
+    ```sql
+        DELIMITER //
+        create procedure ObtenerEmpleadosVentasRangoFechas(IN fecha_inicio DATE, IN fecha_fin DATE)
+        begin
+            select *
+            from empleado
+            where id IN (
+                select empleadoId 
+                from factura 
+                where fecha BETWEEN fecha_inicio AND fecha_fin);
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ObtenerEmpleadosVentasRangoFechas(fecha_inicio, fecha_fin);`
+
+4. Muestre cuales son los empleados que no estan asignados en una sucursalObtener
+
+    - Consulta
+
+    ```sql
+    	select *
+        from empleado
+        where id NOT IN (
+            select empleadoId 
+            from trabajadores
+        );
+    ```
+
+    - Procedimiento `ObtenerEmpleadosSinAsignacionSucursal`
+
+    ```sql
+        DELIMITER //
+        create procedure ObtenerEmpleadosSinAsignacionSucursal()
+        begin
+            select *
+            from empleado
+            where id NOT IN (
+                select empleadoId 
+                from trabajadores
+            );
+        end //
+        DELIMITER ;
+
+    ```
+
+    - Llamado `call ObtenerEmpleadosSinAsignacionSucursal();`
+
+5. Haga una consulta que obtenga los empleados con mas de 1 factura emitida.
+
+    - Consulta
+
+    ```sql
+        select *
+        from empleado
+        where id IN (
+            select empleadoId 
+            from factura GROUP BY empleadoId 
+            HAVING COUNT(*) > 1
+        ); 	
+    ```
+
+    - Procedimiento `ObtenerEmpleadosMasFacturasEmitidas`
+
+    ```sql
+        DELIMITER //
+        create procedure ObtenerEmpleadosMasFacturasEmitidas(IN cantidad_facturas INT)
+        begin
+            select *
+            from empleado
+            where id IN (
+                select empleadoId 
+                from factura GROUP BY empleadoId 
+                HAVING COUNT(*) > cantidad_facturas
+            );
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ObtenerEmpleadosMasFacturasEmitidas(cantidad_facturas);`
+
+
 </details>
 
 <details>
@@ -238,7 +550,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    - Consulta
 
    ```sql
-       select id, nombre AS nombre_cliente
+       select id, nombre as nombre_cliente
        from cliente
        where id IN (
            select f.clienteId
@@ -257,7 +569,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
    	DELIMITER // 
    	create procedure metoPago_en_sucursal_cliente(in direccionSucursal varchar(90), in nombreTargeta varchar(90))
    	begin 
-   	 select id, nombre AS nombre_cliente
+   	 select id, nombre as nombre_cliente
        from cliente
        where id IN (
            select f.clienteId
@@ -310,29 +622,29 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     - Consulta
 
     ```sql
-    	SELECT f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
-        FROM factura f
+    	select f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
+        from factura f
         JOIN empleado e ON e.id = f.empleadoId
         JOIN cliente c ON c.id = f.clienteId
         JOIN productos p ON p.id = f.productosId
         JOIN metodoPago m ON m.id = f.metodoPagoId
-        WHERE f.metodoPagoId = 1;
+        where f.metodoPagoId = 1;
     ```
 
     - Procedimiento `ObtenerFacturasPorMetodoPago`
 
     ```sql
         DELIMITER //
-        CREATE PROCEDURE ObtenerFacturasPorMetodoPago(IN metodo_pago_id INT)
-        BEGIN
-        		SELECT f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
-            FROM factura f
+        create procedure ObtenerFacturasPorMetodoPago(IN metodo_pago_id INT)
+        begin
+        		select f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
+            from factura f
             JOIN empleado e ON e.id = f.empleadoId
             JOIN cliente c ON c.id = f.clienteId
             JOIN productos p ON p.id = f.productosId
             JOIN metodoPago m ON m.id = f.metodoPagoId
-            WHERE f.metodoPagoId = metodo_pago_id;
-        END //
+            where f.metodoPagoId = metodo_pago_id;
+        end //
         DELIMITER ;
     ```
 
@@ -343,29 +655,29 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     - Consulta
 
     ```sql
-        SELECT f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
-        FROM facturaSegundaMano f
+        select f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
+        from facturaSegundaMano f
         JOIN empleado e ON e.id = f.empleadoId
         JOIN clienteSegundaMano c ON c.id = f.clienteId
         JOIN productosSegundaMano p ON p.id = f.productosId
         JOIN metodoPago m ON m.id = f.metodoPagoId
-        WHERE f.metodoPagoId = 7;
+        where f.metodoPagoId = 7;
     ```
 
     - Procedimiento `ObtenerFacturasSegundaManoPorMetodoPago`
 
     ```sql
     	DELIMITER //
-        CREATE PROCEDURE ObtenerFacturasSegundaManoPorMetodoPago(IN metodo_pago_id INT)
-        BEGIN
-        	SELECT f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
-            FROM facturaSegundaMano f
+        create procedure ObtenerFacturasSegundaManoPorMetodoPago(IN metodo_pago_id INT)
+        begin
+        	select f.id as Id_factura, e.nombre as Nombre_Empleado, c.nombre as Nombre_Cliente, p.producto, m.nombre as MetodoPago, f.fecha
+            from facturaSegundaMano f
             JOIN empleado e ON e.id = f.empleadoId
             JOIN clienteSegundaMano c ON c.id = f.clienteId
             JOIN productosSegundaMano p ON p.id = f.productosId
             JOIN metodoPago m ON m.id = f.metodoPagoId
-            WHERE f.metodoPagoId = metodo_pago_id;
-        END //
+            where f.metodoPagoId = metodo_pago_id;
+        end //
         DELIMITER ;
     ```
 
@@ -464,7 +776,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     - Consulta
 
     ```sql
-        select SUM(p.precio * ps.cantidad) AS monto_total
+        select SUM(p.precio * ps.cantidad) as monto_total
         from factura f
         join productos ps on f.productosId = ps.id
         join producto p on ps.producto = p.producto
@@ -477,7 +789,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     	DELIMITER //
     	create procedure monto_compras_cliente_cant_productos(in numProductos int)
     	begin
-    		select SUM(p.precio * ps.cantidad) AS monto_total
+    		select SUM(p.precio * ps.cantidad) as monto_total
             from factura f
             join productos ps on f.productosId = ps.id
             join producto p on ps.producto = p.producto
@@ -487,6 +799,42 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call monto_compras_cliente_cant_productos(cantProductos);`
+
+
+4. Obtenga los clientes que han utilizado Múltiples Metodos de Pago.
+
+    - Consulta
+
+    ```sql
+    	select *
+        from cliente c
+        where c.id IN (
+            select clienteId
+            from factura
+            GROUP BY clienteId
+            HAVING COUNT(DISTINCT metodoPagoId) > 1
+        );
+    ```
+
+    - Procedimiento `ObtenerClientesMultiplesMetodosPago`
+
+    ```sql
+    	DELIMITER //
+        create procedure ObtenerClientesMultiplesMetodosPago()
+        begin
+            select *
+            from cliente c
+            where c.id IN (
+                select clienteId
+                from factura
+                GROUP BY clienteId
+                HAVING COUNT(DISTINCT metodoPagoId) > 1
+            );
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ObtenerClientesMultiplesMetodosPago();`
 
 </details>
 
@@ -500,29 +848,29 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     - Consulta
 
     ```sql
-    	SELECT f.*, e.nombre AS empleado, c.nombre AS cliente, p.producto AS producto, mp.nombre AS metodo_pago
-        FROM factura f
+    	select f.*, e.nombre as empleado, c.nombre as cliente, p.producto as producto, mp.nombre as metodo_pago
+        from factura f
         JOIN empleado e ON f.empleadoId = e.id
         JOIN cliente c ON f.clienteId = c.id
         JOIN productos p ON f.productosId = p.id
         JOIN metodoPago mp ON f.metodoPagoId = mp.id
-        WHERE f.id = 2;	
+        where f.id = 2;	
     ```
 
     - Procedimiento `ObtenerDetallesFactura`
 
     ```sql
         DELIMITER //
-        CREATE PROCEDURE ObtenerDetallesFactura(IN factura_id INT)
-        BEGIN
-            SELECT f.*, e.nombre AS empleado, c.nombre AS cliente, p.producto AS producto, mp.nombre AS metodo_pago
-            FROM factura f
+        create procedure ObtenerDetallesFactura(IN factura_id INT)
+        begin
+            select f.*, e.nombre as empleado, c.nombre as cliente, p.producto as producto, mp.nombre as metodo_pago
+            from factura f
             JOIN empleado e ON f.empleadoId = e.id
             JOIN cliente c ON f.clienteId = c.id
             JOIN productos p ON f.productosId = p.id
             JOIN metodoPago mp ON f.metodoPagoId = mp.id
-            WHERE f.id = factura_id;
-        END //
+            where f.id = factura_id;
+        end //
         DELIMITER ;
     ```
 
@@ -938,29 +1286,29 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     - Consulta
 
     ```sql
-    	SELECT fs.*, e.nombre AS empleado, c.nombre AS cliente, p.producto AS producto, mp.nombre AS metodo_pago
-        FROM facturaSegundaMano fs
+    	select fs.*, e.nombre as empleado, c.nombre as cliente, p.producto as producto, mp.nombre as metodo_pago
+        from facturaSegundaMano fs
         JOIN empleado e ON fs.empleadoId = e.id
         JOIN clienteSegundaMano c ON fs.clienteId = c.id
         JOIN productosSegundaMano p ON fs.productosId = p.id
         JOIN metodoPago mp ON fs.metodoPagoId = mp.id
-        WHERE fs.id = 1;	
+        where fs.id = 1;	
     ```
 
     - Procedimiento `ObtenerDetallesFacturaSegundaMano`
     
     ```sql
     	DELIMITER //
-    	CREATE PROCEDURE ObtenerDetallesFacturaSegundaMano(IN factura_id INT)
-    	BEGIN
-            SELECT fs.*, e.nombre AS empleado, c.nombre AS cliente, p.producto AS producto, mp.nombre AS metodo_pago
-            FROM facturaSegundaMano fs
+    	create procedure ObtenerDetallesFacturaSegundaMano(IN factura_id INT)
+    	begin
+            select fs.*, e.nombre as empleado, c.nombre as cliente, p.producto as producto, mp.nombre as metodo_pago
+            from facturaSegundaMano fs
             JOIN empleado e ON fs.empleadoId = e.id
             JOIN clienteSegundaMano c ON fs.clienteId = c.id
             JOIN productosSegundaMano p ON fs.productosId = p.id
             JOIN metodoPago mp ON fs.metodoPagoId = mp.id
-            WHERE fs.id = factura_id;
-    	END //
+            where fs.id = factura_id;
+    	end //
     	DELIMITER ;
     ```
     
@@ -971,6 +1319,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
 <details>
   <summary>Tabla productosSegundaMano</summary>
    <br>
+
 1. Obtenga el nombre de los productos de segunda mano con estado "Nuevo" y un precio mayor a 300.
 
    - Consulta
@@ -999,7 +1348,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
 
 2.   Muestre la cantidad de productos suministrados por el distribuidor  "Bicicletas del Futuro Ltda".
 
-    - Consulta
+- Consulta
 
     ```sql
         select count(p.producto) as cantidad_de_productos
@@ -1067,7 +1416,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     - Consulta
 
     ```sql
-    	select SUM(p.precio * ps.cantidad) AS monto_total
+    	select SUM(p.precio * ps.cantidad) as monto_total
         from facturaSegundaMano f
         join productosSegundaMano ps on f.productosId = ps.id
         join productoSegundaMano p on ps.producto = p.producto
@@ -1080,7 +1429,7 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     	DELIMITER //
     	create procedure monto_compras_cliente_cant_productosSegundaMano(in numProductos int)
     	begin
-    		select SUM(p.precio * ps.cantidad) AS monto_total
+    		select SUM(p.precio * ps.cantidad) as monto_total
             from facturaSegundaMano f
             join productosSegundaMano ps on f.productosId = ps.id
             join productoSegundaMano p on ps.producto = p.producto
@@ -1223,6 +1572,78 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
     ```
 
     - Llamado `call clientesSegundaMano_todas_sucursales();`
+
+
+2. Obtenga un cliente de segunda mano con 2 compras
+
+    - Consulta
+
+    ```sql
+        select *
+        from clienteSegundaMano c
+        where c.id IN (
+            select clienteId 
+            from facturaSegundaMano 
+            GROUP BY clienteId 
+            HAVING COUNT(*) > 2
+        );
+    ```
+
+    - Procedimiento `ObtenerClienteSegundaManoMasCompras`
+
+    ```sql
+    	DELIMITER //
+        create procedure ObtenerClienteSegundaManoMasCompras(IN cantidad_compras INT)
+        begin
+            select *
+            from clienteSegundaMano c
+            where c.id IN (
+                select clienteId 
+                from facturaSegundaMano 
+                GROUP BY clienteId 
+                HAVING COUNT(*) > cantidad_compras
+            );
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ObtenerClienteSegundaManoMasCompras();`
+
+3. Obtenga los clientes de segunda mano que han utilizado Múltiples Metodos de Pago.
+
+    - Consulta
+
+    ```sql
+    	select *
+        from clienteSegundaMano c
+        where c.id IN (
+            select clienteId
+            from facturaSegundaMano
+            GROUP BY clienteId
+            HAVING COUNT(DISTINCT metodoPagoId) > 1
+        );
+    ```
+
+    - Procedimiento `ObtenerClienteSegundaManoMultiplesMetodosPago`
+
+    ```sql
+    	DELIMITER //
+        create procedure ObtenerClienteSegundaManoMultiplesMetodosPago()
+        begin
+            select *
+            from clienteSegundaMano c
+            where c.id IN (
+                select clienteId
+                from facturaSegundaMano
+                GROUP BY clienteId
+                HAVING COUNT(DISTINCT metodoPagoId) > 1
+            );
+        end //
+        DELIMITER ;
+    ```
+
+    - Llamado `call ObtenerClienteSegundaManoMultiplesMetodosPago();`
+
 
 </details>
 
