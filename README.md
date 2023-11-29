@@ -36,6 +36,413 @@ Además, buscamos establecer una visión clara de nuestros proveedores de segund
   <summary>Click para desplegar</summary>
    <br>
 
+<details>
+  <summary>Tabla preFactura</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO preFactura (id, tipoServicio, precio) VALUES (1, 'Maintenance', 50);
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM preFactura WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE preFactura SET precio = 60 WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM preFactura WHERE id = 1;
+     ```
+</details>
+
+
+<details>
+  <summary>Tabla metodoPago</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO metodoPago (id, nombre, tipo) VALUES (1, 'Credit Card', 'Credit');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM metodoPago WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE metodoPago SET nombre = 'Debit Card' WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM metodoPago WHERE id = 1;
+     ```
+</details>
+
+
+<details>
+  <summary>Tabla servicio</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO servicio (tipoServicio, tipoVehiculo, complejidad) VALUES ('Maintenance', 'Bicycle', 'Medium');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM servicio WHERE tipoServicio = 'Maintenance';
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE servicio SET complejidad = 'High' WHERE tipoServicio = 'Maintenance';
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM servicio WHERE tipoServicio = 'Maintenance';
+     ```
+</details>
+
+
+<details>
+  <summary>Tabla factura</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO factura (id, empleadoId, clienteId, productosId, preFacturaId, metodoPagoId, fecha) VALUES (1, 101, 201, 301, 1, 1, '2023-11-29 12:00:00');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM factura WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE factura SET empleadoId = 102 WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM factura WHERE id = 1;
+     ```
+</details>
+
+
+<details>
+  <summary>Tabla sucursal</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO sucursal (id, direccion, nombre) VALUES (1, '123 Main Street', 'Main Branch');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM sucursal WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE sucursal SET direccion = '456 Oak Avenue' WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM sucursal WHERE id = 1;
+     ```
+
+</details>
+<details>
+  <summary>Tabla trabajadores</summary>
+   <br>
+
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO trabajadores (id, sucursalId, empleadoId) VALUES (1, 501, 101);
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM trabajadores WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE trabajadores SET empleadoId = 102 WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM trabajadores WHERE id = 1;
+     ```
+
+
+
+</details>
+<details>
+  <summary>Tabla empleado</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO empleado (id, nombre, apellido1, apellido2, numeroCelular, correo, rol) VALUES (101, 'John', 'Doe', 'Smith', '123-456-7890', 'john.doe@example.com', 'Mechanic');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM empleado WHERE id = 101;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE empleado SET rol = 'Supervisor' WHERE id = 101;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM empleado WHERE id = 101;
+     ```
+</details>
+<details>
+  <summary>Tabla cliente</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO cliente (id, nombre, apellido1, apellido2, telefono, correo) VALUES (1, 'John', 'Doe', 'Smith', '123456789', 'john.doe@example.com');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM cliente WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE cliente SET telefono = '987654321' WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM cliente WHERE id = 1;
+     ```
+</details>
+<details>
+  <summary>Tabla productos</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO productos (id, producto, cantidad) VALUES (1, 'Bike Pump', 20);
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM productos WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE productos SET cantidad = 25 WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM productos WHERE id = 1;
+     ```
+
+</details>
+<details>
+  <summary>Tabla producto</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO producto (producto, descripcion, tipo, precio, categoria) VALUES ('Bike001', 'Mountain Bike', 'Bicycle', 500, 'Outdoor');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM producto WHERE producto = 'Bike001';
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE producto SET precio = 550 WHERE producto = 'Bike001';
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM producto WHERE producto = 'Bike001';
+     ```
+
+
+</details>
+<details>
+  <summary>Tabla inventario</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO inventario (producto, fecha, distribuidorId, cantidad) VALUES ('Bike Part A', '2023-11-29 12:00:00', 1, 50);
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM inventario WHERE producto = 'Bike Part A';
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE inventario SET cantidad = 60 WHERE producto = 'Bike Part A';
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM inventario WHERE producto = 'Bike Part A';
+     ```
+
+</details>
+<details>
+  <summary>Tabla distribuidor</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO distribuidor (id, nombre, numeroTelefono, numeroCelular, correo) VALUES (1, 'Distribuidor A', '123456789', '987654321', 'distribuidorA@example.com');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM distribuidor WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE distribuidor SET nombre = 'Distribuidor B' WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM distribuidor WHERE id = 1;
+     ```
+
+
+</details>
+<details>
+  <summary>Tabla distribuidorSegundaMano</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO distribuidorSegundaMano (id, nombre, numeroTelefono, numeroCelular, correo) VALUES (1, 'SecondHand Distributor', '123456789', '987654321', 'distributor@example.com');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM distribuidorSegundaMano WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE distribuidorSegundaMano SET nombre = 'Updated Distributor' WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM distribuidorSegundaMano WHERE id = 1;
+     ```
+
+</details>
+<details>
+  <summary>Tabla inventarioSegundaMano</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO inventarioSegundaMano (producto, fecha, distribuidorId, cantidad) VALUES ('SecondHandProduct1', '2023-11-29 12:00:00', 501, 10);
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM inventarioSegundaMano WHERE producto = 'SecondHandProduct1';
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE inventarioSegundaMano SET cantidad = 15 WHERE producto = 'SecondHandProduct1';
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM inventarioSegundaMano WHERE producto = 'SecondHandProduct1';
+     ```
+
+
+</details>
+<details>
+  <summary>Tabla productoSegundaMano</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO productoSegundaMano (producto, descripcion, tipo, precio, estado, categoria) VALUES ('UsedBike001', 'Vintage bicycle in good condition', 'Bicycle', 200, 'Used', 'Vintage');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM productoSegundaMano WHERE producto = 'UsedBike001';
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE productoSegundaMano SET precio = 250 WHERE producto = 'UsedBike001';
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM productoSegundaMano WHERE producto = 'UsedBike001';
+     ```
+
+
+</details>
+<details>
+  <summary>Tabla productosSegundaMano</summary>
+   <br>
+
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO productosSegundaMano (id, producto, cantidad) VALUES (1, 'Used Bike', 3);
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM productosSegundaMano WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE productosSegundaMano SET cantidad = 5 WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM productosSegundaMano WHERE id = 1;
+     ```
+
+</details>
+<details>
+  <summary>Tabla clienteSegundaMano</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO clienteSegundaMano (id, nombre, apellido1, apellido2, telefono, correo) VALUES (1, 'John', 'Doe', 'Smith', '555-1234', 'john.doe@example.com');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM clienteSegundaMano WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE clienteSegundaMano SET telefono = '555-5678' WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM clienteSegundaMano WHERE id = 1;
+     ```
+
+</details>
+<details>
+  <summary>Tabla facturaSegundaMano</summary>
+   <br>
+
+   - **CREATE:**
+     ```sql
+     INSERT INTO facturaSegundaMano (id, empleadoId, clienteId, productosId, metodoPagoId, fecha) VALUES (1, 102, 301, 401, 2, '2023-11-30 14:30:00');
+     ```
+   - **READ:**
+     ```sql
+     SELECT * FROM facturaSegundaMano WHERE id = 1;
+     ```
+   - **UPDATE:**
+     ```sql
+     UPDATE facturaSegundaMano SET empleadoId = 103 WHERE id = 1;
+     ```
+   - **DELETE:**
+     ```sql
+     DELETE FROM facturaSegundaMano WHERE id = 1;
+     ```
+    
+</details>
+
 </details>
 
 ## Consultas y procedimientos
